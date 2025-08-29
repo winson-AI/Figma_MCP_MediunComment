@@ -28,6 +28,9 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import org.jetbrains.compose.resources.painterResource
@@ -208,11 +211,21 @@ private fun CommentRow(item: CommentItem) {
                 }
             }
             Spacer(Modifier.height(6.dp))
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Text(item.message, color = TextPrimary, fontSize = 15.sp)
-                Spacer(Modifier.width(6.dp))
-                Text(item.time, color = TextSecondary, fontSize = 13.sp)
-            }
+            Text(
+                text = buildAnnotatedString {
+                    append(item.message)
+                    append(" ")
+                    withStyle(
+                        SpanStyle(
+                            color = Color(0xFF86878B),
+                            fontSize = 13.sp
+                        )
+                    ) {
+                        append(item.time)
+                    }
+                },
+                fontSize = 15.sp
+            )
             if (item.repliesText != null) {
                 Spacer(Modifier.height(6.dp))
                 Row(verticalAlignment = Alignment.CenterVertically) {
