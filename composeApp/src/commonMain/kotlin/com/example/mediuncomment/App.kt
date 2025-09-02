@@ -229,9 +229,9 @@ private fun CommentRow(item: CommentItem) {
             if (item.repliesText != null) {
                 Spacer(Modifier.height(6.dp))
                 Row(verticalAlignment = Alignment.CenterVertically) {
-                    Image(painterResource(Res.drawable.ic_chevron_up), contentDescription = null, modifier = Modifier.size(10.dp))
-                    Spacer(Modifier.width(4.dp))
                     Text(item.repliesText, color = TextSecondary, fontSize = 13.sp, fontWeight = FontWeight.SemiBold)
+                    Spacer(Modifier.width(4.dp))
+                    Image(painterResource(Res.drawable.ic_chevron_up), contentDescription = null, modifier = Modifier.size(10.dp))
                 }
             }
         }
